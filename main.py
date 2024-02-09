@@ -10,7 +10,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY")) 
 
 prompt = """You are youtube video summarizer. You will be taking the transcript text
-and summarizing  the entire video and providing the important summary in points with 250 words"""
+and have to summarize the entire video and providing the important summary in points within 250 words"""
 
 def extract_transcript_details(youtube_video_url):
     try:
@@ -29,7 +29,7 @@ def generate_gemini_content(transcript_text,prompt):
     response=model.generate_content(prompt+transcript_text)
     return response.text
 
-st.title("Youtube Transcript to Detailed Noted Converter")
+st.title("Youtube Video Summarizer")
 youtube_link = st.text_input("Enter youtube link")
 
 if youtube_link:
